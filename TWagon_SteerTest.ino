@@ -1,4 +1,5 @@
 #include <math.h>
+#include <Servo.h>
 
 long x = 0;  // X coordinate of target in centimeters
 long y = 0;  // Y coordinate of target in centimeters
@@ -6,10 +7,13 @@ int angle = 0;  // turn angle of wheels
 int maxAngle = 45; // max turning angle of wheels
 long distance = 0; // Distance between cart and target
 
+Servo steerServo; // Servo object to control steering servo
+int steerAngle = 0; // Angle sent to steering servo
+
 void setup() {
   // Initialize serial communication at 9600 baud
   Serial.begin(9600);
-
+  steerServo.attach(9, 1000, 2000);
 }
 
 void loop() {
@@ -50,4 +54,6 @@ void loop() {
     Serial.println(angle);
     }
   }
+  steerAngle = 142 + angle; // servo middle=150
+  steerServo.write(steerAngle);
 }
