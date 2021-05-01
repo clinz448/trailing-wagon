@@ -13,6 +13,7 @@ int steerAngle = 0; // Angle sent to steering servo
 void setup() {
   // Initialize serial communication at 9600 baud
   Serial.begin(9600);
+  // Steering servo controlled by pin #9
   steerServo.attach(9, 1000, 2000);
 }
 
