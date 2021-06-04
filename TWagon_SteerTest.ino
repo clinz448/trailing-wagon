@@ -36,6 +36,7 @@ void loop() {
     // Calculate distance and angle
     distance = sqrt(sq(x) + sq(y));
     angle = (atan2(y,x) * 180 / M_PI) - 90;
+    angle = -angle;
     if(distance == 0){
       angle = 0;
     }
